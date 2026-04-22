@@ -5,23 +5,32 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #f5f6fa;
-            padding: 40px;
+            background: #f4f6f9;
+            margin: 0;
+            padding: 30px;
         }
+
         h1 {
-            color: #2f3640;
+           text-align: center;
+           margin-bottom: 30px;
         }
-        .card {
-            background: white;
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .title {
-            font-size: 20px;
-            font-weight: bold;
-        }
+
+       .card {
+           background: white;
+           border-radius: 15px;
+           padding: 20px;
+           margin: 15px auto;
+           width: 70%;
+           box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+       }
+
+       a {
+          text-decoration: none;
+          padding: 8px 14px;
+          border-radius: 8px;
+          background: #007bff;
+          color: white;
+       }
     </style>
 </head>
 <body>
@@ -33,6 +42,7 @@
         <p>담당자: {{ task.assignee }}</p>
         <p>상태: {{ task.status }}</p>
         <p>마감일: {{ task.deadline }}</p>
+        <a href="/delete/{{ task.id }}/">🗑 삭제</a>
     </div>
     {% empty %}
     <div class="card">
