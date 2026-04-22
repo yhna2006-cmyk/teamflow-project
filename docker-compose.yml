@@ -1,0 +1,32 @@
+services:
+  db:
+    image: postgres:16
+    container_name: teamflow-db
+    environment:
+      POSTGRES_DB: teamflowdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5432:5432"
+
+  web:
+    image: python:3.11
+    container_name: teamflow-web
+    working_dir: /app
+    volumes:
+      - ./app:/app
+    command: tail -f /dev/null
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  nginx:
+    image: nginx
+    container_name: teamflow-nginx
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+    depends_on:
+      - web

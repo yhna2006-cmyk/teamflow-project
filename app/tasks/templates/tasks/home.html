@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TeamFlow</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            padding: 40px;
+        }
+        h1 {
+            color: #2f3640;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>📋 TeamFlow 업무 관리 시스템</h1>
+    <a href="/add/">➕ 업무 추가</a>
+    {% for task in tasks %}
+    <div class="card">
+        <div class="title">{{ task.title }}</div>
+        <p>담당자: {{ task.assignee }}</p>
+        <p>상태: {{ task.status }}</p>
+        <p>마감일: {{ task.deadline }}</p>
+    </div>
+    {% empty %}
+    <div class="card">
+        <p>등록된 업무가 없습니다.</p>
+    </div>
+    {% endfor %}
+</body>
+</html>
