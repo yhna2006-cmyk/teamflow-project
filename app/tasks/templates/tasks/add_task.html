@@ -1,36 +1,120 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>업무 추가</title>
+
     <style>
         body {
-            font-family: Arial;
-            background: #f5f6fa;
+            font-family: "Arial Rounded MT Bold", "Malgun Gothic", sans-serif;
+            background: linear-gradient(135deg, #ffe4f2, #fff5b7);
+            min-height: 100vh;
+            margin: 0;
             padding: 40px;
         }
-        .box {
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
             background: white;
-            padding: 30px;
-            width: 400px;
-            border-radius: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 35px;
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.15);
+            border: 4px solid #ffd6eb;
         }
+
+        h1 {
+            text-align: center;
+            font-size: 42px;
+            color: #ff4fa3;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 0 white;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        label {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ff4fa3;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 18px;
+            font-size: 20px;
+            border-radius: 18px;
+            border: 3px solid #ffb6d9;
+            background: #fff8fc;
+            box-sizing: border-box;
+        }
+
         button {
-            padding: 10px 20px;
+            margin-top: 20px;
+            background: #ffe066;
+            color: #7a4b00;
             border: none;
-            border-radius: 8px;
+            padding: 18px;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 18px;
             cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.03);
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            background: #ffb6d9;
+            color: #7a2450;
+            padding: 14px 20px;
+            border-radius: 14px;
+            font-weight: bold;
+            font-size: 18px;
         }
     </style>
 </head>
 <body>
-    <div class="box">
-        <h2>📝 업무 추가</h2>
+
+    <div class="container">
+        <h1> 새 업무 추가 🙉</h1>
+
         <form method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">추가하기</button>
+
+            <div>
+                <label>업무 제목</label>
+                {{ form.title }}
+            </div>
+
+            <div>
+                <label>담당자</label>
+                {{ form.assignee }}
+            </div>
+
+            <div>
+                <label>마감일</label>
+                {{ form.deadline }}
+            </div>
+
+            <button type="submit">🐒업무 추가하기🐒</button>
         </form>
+
+        <a href="/" class="back-btn">🏠 메인으로 돌아가기</a>
     </div>
+
 </body>
 </html>
