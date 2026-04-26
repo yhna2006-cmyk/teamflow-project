@@ -253,7 +253,7 @@
 
 </form>
 
-            <a href="/delete/{{ task.id }}/" class="delete-btn">삭제</a>
+            <a href="/delete/{{ task.id }}/" class="delete-btn" onclick="return confirm('정말 삭제하시겠습니까?');"> 삭제</a>
     </div>
     {% endfor %}
     </div>
